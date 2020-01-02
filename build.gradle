@@ -17,21 +17,8 @@ configurations {
 repositories {
     mavenCentral()
 }
-
-//buildscript {
-//    dependencies {
-//        //추가
-//        classpath( "io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE")
-//    }
-//}
-
-//apply plugin: 'java'
-//apply plugin: 'eclipse'
-//apply plugin: 'org.springframework.boot'
-
-//Spring Boot 1.5 Overriding
-//추가
-//ext['hibernate.version'] = '5.2.11.Final'
+//Spring Boot Overriding
+ext['hibernate.version'] = '5.2.11.Final' //추가
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
@@ -44,8 +31,6 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testCompile 'junit:junit:4.12'
-    //spring boot 1.5 추가
-    //classpath "io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE"
 }
 
 
