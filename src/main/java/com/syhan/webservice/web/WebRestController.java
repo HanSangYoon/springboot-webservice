@@ -1,6 +1,7 @@
 package com.syhan.webservice.web;
 
 import com.syhan.webservice.domain.posts.PostsRepository;
+import com.syhan.webservice.service.PostsService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class WebRestController {
 
     private PostsRepository postsRepository;
+
+    //Controller의 save 메소드를 Service의 save 메소드로 대체
+    private PostsService postsService;
 
     @GetMapping("/hellothere")
     public String hellothere(){
@@ -27,7 +31,12 @@ public class WebRestController {
      */
 
     @PostMapping("/posts")
-    public void savePosts(@RequestBody PostsSaveRequestDto dto){
-        postsRepository.save(dto.toEntity());
+    // Controller의 save 메소드를 Service의 save 메소드로 대체
+//    public void savePosts(@RequestBody PostsSaveRequestDto dto){
+//        postsRepository.save(dto.toEntity());
+//    }
+
+    public Long savePosts(@RequestBody PostsSaveRequestDto dto){
+        return postsService.save(dto);
     }
 }
